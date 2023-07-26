@@ -7,11 +7,11 @@
       %ul
         - user.errors.each do |error|
           %li= error.full_message
-  %div
-    = form.label :username, style: "display: block"
-    = form.text_field :username
-  %div
-    = form.label :email, style: "display: block"
-    = form.text_field :email
-  %div
-    = form.submit
+  
+  %div.d-grid.gap-2
+    -if user.avatar.attached?
+      = image_tag url_for(user.avatar), class: "img-thumbnail"
+    %label.btn.btn-primary
+      Cambiar foto
+      = form.file_field :avatar, accept: "image/png, image/jpeg", style:"display:none"
+    = form.submit "Guardar cambios", class: "btn btn-secondary"

@@ -1,7 +1,6 @@
-%div{:id => "#{dom_id tweet}"}
-  %p
-    %strong User:
-    = tweet.user_id
-  %p
-    %strong Body:
-    = tweet.body
+.tweet
+  -if tweet.user.avatar.attached?
+    = image_tag url_for(tweet.user.avatar), class: "img-thumbnail"
+  %p.tweet-content= tweet.body
+  .icons
+    
