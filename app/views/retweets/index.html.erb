@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Retweets</h1>
+
+<div id="retweets">
+  <% @retweets.each do |retweet| %>
+    <%= render retweet %>
+    <p>
+      <%= link_to "Show this retweet", retweet %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New retweet", new_retweet_path %>
