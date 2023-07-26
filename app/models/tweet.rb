@@ -3,10 +3,12 @@ class Tweet < ApplicationRecord
 
   after_create :make_new_hastag
   
-  private 
+  # private 
 
   def make_new_hastag
+    self.body.scan(/#\w+/).each do |hashtag|
+      Hashtag.where(identifier:hashtag).first_or_create
+    end 
   end
-
 end
 
