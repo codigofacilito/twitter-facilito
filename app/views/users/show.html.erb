@@ -3,8 +3,8 @@
 <%= render @user %>
 
 <div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
-
-  <%= button_to "Destroy this user", @user, method: :delete %>
+  <% @tweets.each do |tweet| %>
+    <li><%= tweet.body %></li>
+    <%= link_to "retweet" retweet_tweet_post method: :post %>
+  <% end %>
 </div>
