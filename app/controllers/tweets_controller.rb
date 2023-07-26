@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: %i[ show edit update destroy ]
-
+  before_action :set_current_user, only: [:retweet]
   # GET /tweets or /tweets.json
   def index
     @tweets = Tweet.all
@@ -57,8 +57,16 @@ class TweetsController < ApplicationController
     end
   end
 
+  def retweet
+    @tweet.retweet! current_user
+  end
+
   private
-    # Use callbacks to share common setup or constraints between actions.
+    
+    def current_user
+      User.last
+    end
+
     def set_tweet
       @tweet = Tweet.find(params[:id])
     end

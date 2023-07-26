@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_26_212643) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_26_213407) do
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "tweet_id", null: false
@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_212643) do
     t.string "identifier"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "mentions", default: 0
   end
 
   create_table "retweets", force: :cascade do |t|
