@@ -1,0 +1,8 @@
+%p{:style => "color: green"}= notice
+%h1 Hashtags
+#hashtags
+  - @hashtags.each do |hashtag|
+    = render hashtag
+    %p
+      = link_to "Show this hashtag", hashtag
+= link_to "New hashtag", new_hashtag_path

@@ -1,0 +1,8 @@
+%p{:style => "color: green"}= notice
+= render @retweet
+%div
+  = link_to "Edit this retweet", edit_retweet_path(@retweet)
+  |
+  \#{link_to "Back to retweets", retweets_path}
+  
+  \#{button_to "Destroy this retweet", @retweet, method: :delete}

@@ -1,0 +1,6 @@
+%p{:style => "color: green"}= notice
+= render @user
+%div
+  - @tweets.each do |tweet|
+    %li= tweet.body
+    = link_to "retweet" retweet_tweet_post method: :post

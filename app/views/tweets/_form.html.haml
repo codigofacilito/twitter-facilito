@@ -1,0 +1,14 @@
+= form_with(model: tweet, class:"tweet-form") do |form|
+  - if tweet.errors.any?
+    %div{:style => "color: red"}
+      %h2
+        = pluralize(tweet.errors.count, "error")
+        prohibited this tweet from being saved:
+      %ul
+        - tweet.errors.each do |error|
+          %li= error.full_message
+  
+  %div
+    = form.text_area :body, class:"form-control", placeholder:"What's happening?", rows: 5
+  %div.d-grid.gap-2
+    = form.submit "Tweet", class:"btn btn-primary btn-block"
