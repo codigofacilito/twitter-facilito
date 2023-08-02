@@ -15,7 +15,7 @@ class Tweet < ApplicationRecord
 
   has_many :retweets
 
-  before_create :set_retweet
+  before_validation :set_retweet
   after_create :make_new_hastag
 
   def retweet!(user)
@@ -27,7 +27,7 @@ class Tweet < ApplicationRecord
   end
   
   def set_retweet
-    
+    self.retweet_id = Retweet.last.id if retweet_id.nil?
   end
 
   def make_new_hastag
