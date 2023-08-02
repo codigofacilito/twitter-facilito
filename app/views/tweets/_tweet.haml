@@ -1,7 +1,13 @@
-.hide-y
-  .tweet{class:[("tweet-animation" if local_assigns[:animate])]}
+.tweet
+  .tweet--inner{class:[("tweet-anmation" if local_assigns[:animate])]}
     -if tweet.user.avatar.attached?
       = image_tag url_for(tweet.user.avatar), class: "img-thumbnail"
-    %p.tweet-content= tweet.body
-    .icons
-      %button Retweet
+    %div.tweet-content
+      %header
+        %p= tweet.user.username_or_email
+        %time
+          hace
+          = time_ago_in_words(tweet.created_at)
+      %p= tweet.body
+      .icons
+        %button Retweet
