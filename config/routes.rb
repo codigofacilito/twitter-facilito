@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :hashtags
   resources :comments
   resources :tweets do
-    post :retweet, on: :member 
+    get :retweet, on: :member 
   end
 
   resources :users 

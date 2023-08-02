@@ -1,12 +1,12 @@
 class TweetsController < ApplicationController
-  before_action :set_tweet, only: %i[ show edit update destroy ]
+  before_action :set_tweet, only: %i[ show edit update destroy retweet]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_current_user, only: [:retweet]
+  
   # GET /tweets or /tweets.json
   def index
     @tweets = Tweet.order("id desc")
     @tweet = Tweet.new
-    @hashtag =  Hashtag.top
+    @hashtag =  Hashtag.top.limit(5)
   end
 
   # GET /tweets/1 or /tweets/1.json
@@ -63,14 +63,11 @@ class TweetsController < ApplicationController
 
   def retweet
     @tweet.retweet! current_user
+    redirect_to root_path
   end
 
   private
-    
-    def current_user
-      User.last
-    end
-
+ 
     def set_tweet
       @tweet = Tweet.find(params[:id])
     end

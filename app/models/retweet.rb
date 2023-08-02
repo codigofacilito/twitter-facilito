@@ -13,4 +13,14 @@ class Retweet < ApplicationRecord
   belongs_to :user
   belongs_to :tweet
   
+  after_create :create_tweet
+
+  def create_tweet
+    Tweet.create(
+      user_id: self.user_id, 
+      body: self.tweet.body,
+      retweet: self
+    )
+  end
+  
 end

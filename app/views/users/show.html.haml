@@ -1,6 +1,6 @@
 %p{:style => "color: green"}= notice
 = render @user
+= link_to "Seguir", root_path
+
 %div
-  - @tweets.each do |tweet|
-    %li= tweet.body
-    = link_to "retweet" retweet_tweet_post method: :post
+  =render @tweets
