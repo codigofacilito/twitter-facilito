@@ -1,8 +1,13 @@
-%p{:style => "color: green"}= notice
-= render @tweet
-%div
-  = link_to "Edit this tweet", edit_tweet_path(@tweet)
-  |
-  \#{link_to "Back to tweets", tweets_path}
-  
-  \#{button_to "Destroy this tweet", @tweet, method: :delete}
+-tweet = @tweet
+.tweet
+  .tweet--inner.individual
+    -if tweet.user.avatar.attached?
+      = image_tag url_for(tweet.user.avatar), class: "img-thumbnail"
+    %div.tweet-content
+      %header
+        %p= tweet.user.username_or_email
+      %p= tweet.body
+    .actions-bar
+      .icons
+        %button Retweet
+      %time.subtitle-text= l(tweet.created_at, format: :long)

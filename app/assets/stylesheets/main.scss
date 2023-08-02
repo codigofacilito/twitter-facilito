@@ -2,7 +2,7 @@ body{
   margin: 0;
 }
 main{
-  width: 960px;
+  width: 1028px;
   max-width: 100%;
   margin: 0 auto;
   margin-top:2em;
@@ -33,33 +33,12 @@ main{
 }
 
 
-.tweet{
-  border-bottom: 1px solid #ced4da;
-  padding: 1em;
-  display: grid;
-  gap:1em;
-  grid-template-columns: 90px 1fr;
-  grid-template-areas: "avatar tweet"
-                      "icons icons";
-  img{
-    grid-area: avatar;
-  }
-  .tweet-content{
-    grid-area: tweet;
-  }
-  .icons{
-    grid-area: icons;
-    display: flex;
-    flex-direction: row;
-    gap: 1em;
-    justify-content: space-between;
-  }
-}
+
 
 .aside-with-main{
   display: grid;
   gap:30px;
-  grid-template-columns: 300px minmax(0, 1fr);
+  grid-template-columns: 200px minmax(0, 1fr) 200px;
 }
 
 .img-thumbnail{
@@ -79,8 +58,69 @@ main{
   transform: scaleY(0);
 }
 
-.hide-y{
+.tweet{
   overflow-y: hidden;
+  // transition: 0.2s ease-out;
+  
+  // &:hover{
+  //   background-color: #f8f9fa;
+  // }
+}
+
+.tweet--inner {
+  border-bottom: 1px solid #ced4da;
+  padding: 1em;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  display: grid;
+  gap: 1em;
+  grid-template-columns: 60px 1fr;
+  grid-template-areas: "avatar tweet";
+
+  &.individual{
+    grid-template-areas: "avatar tweet"
+                          "icons icons";
+    .actions-bar{
+      grid-area: icons;
+      width: 100%;
+      margin-top:1em;
+      display: flex;
+      flex-direction: column;
+      gap:1em;
+    }
+  }
+  
+
+  img {
+    grid-area: avatar;
+  }
+
+  .tweet-content {
+    grid-area: tweet;
+  }
+
+  .icons {
+    grid-area: icons;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: space-between;
+  }
+  header{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    font-weight: bold;
+    margin-bottom: 12px;
+    p{
+      margin:0;
+    }
+    time{
+      font-weight: 300;
+      color: #6c757d;
+      font-size: 0.7em;
+    }
+  }
 }
 
 @keyframes slideDown {
@@ -90,4 +130,14 @@ main{
   100% {
     transform: translateY(0);
   }
+}
+
+.no-margin{
+  margin: 0;
+}
+
+.subtitle-text{
+  font-size: 1.2em;
+  color: #6c757d;
+  font-weight: 300;
 }

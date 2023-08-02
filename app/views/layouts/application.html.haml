@@ -14,4 +14,12 @@
   %body
     = render "header"
     %main
-      = yield
+      .aside-with-main
+        %aside
+          -if user_signed_in?
+            =render "users/form", user: current_user
+        %section
+          = yield
+        =render @hashtag
+
+      
