@@ -27,7 +27,7 @@ class Tweet < ApplicationRecord
   end
   
   def set_retweet
-    retweet_id = Retweet.last  if retweet_id.nil?
+    
   end
 
   def make_new_hastag

@@ -1,13 +1,1 @@
--tweet = @tweet
-.tweet
-  .tweet--inner.individual
-    -if tweet.user.avatar.attached?
-      = image_tag url_for(tweet.user.avatar), class: "img-thumbnail"
-    %div.tweet-content
-      %header
-        %p= tweet.user.username_or_email
-      %p= tweet.body
-    .actions-bar
-      .icons
-        %button Retweet
-      %time.subtitle-text= l(tweet.created_at, format: :long)
+=render @tweet
