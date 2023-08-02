@@ -20,4 +20,19 @@ class User < ApplicationRecord
   has_many :tweets
   has_one_attached :avatar
     
+  def follow(user)
+    Follower.create(
+      user: self,
+      follower_id: user.id
+    )
+  end
+
+  def unfollow(user)
+    Follower.where(user:user).where(follower_id:id).delete_all
+  end
+
+  def following?(user)
+    Follower.where(user:user).where(follower_id:id).any?
+  end
+
 end

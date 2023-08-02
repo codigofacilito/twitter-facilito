@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ show edit update destroy follow]
   # GET /users or /users.json
   def index
     @users = User.all
@@ -58,7 +58,13 @@ class UsersController < ApplicationController
   end
 
   def follow
+    @user.follow(current_user)
+    return redirect_to @user
+  end
 
+  def unfollow
+    @user.unfollow(current_user)
+    return redirect_to @user
   end
 
   private
