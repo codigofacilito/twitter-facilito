@@ -70,6 +70,18 @@ main{
   margin: 0 auto;
 }
 
+.image-container {
+  display: flex;
+  max-width: 300px;
+  max-height: 450px;
+}
+
+.tweet-image {
+  width: 20vw;
+  height: auto;
+  border-radius: 10px;
+}
+
 
 .tweet-animation{
   transform-origin: top;

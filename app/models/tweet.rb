@@ -13,6 +13,7 @@ class Tweet < ApplicationRecord
   has_many :retweets
 
   after_create :make_new_hastag
+  has_many_attached :images
 
   def retweet!(user)
     retweets.create(user:user)
@@ -29,4 +30,3 @@ class Tweet < ApplicationRecord
   end
 
 end
-

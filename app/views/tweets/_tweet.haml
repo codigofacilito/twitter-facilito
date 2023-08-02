@@ -3,5 +3,9 @@
     -if tweet.user.avatar.attached?
       = image_tag url_for(tweet.user.avatar), class: "img-thumbnail"
     %p.tweet-content= tweet.body
+    .image-container
+      -if tweet.images.any?
+        - tweet.images.each do |image|
+          = image_tag(image, class: "tweet-image")
     .icons
       %button Retweet
