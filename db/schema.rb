@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_26_222907) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_02_213729) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -46,6 +46,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_222907) do
     t.datetime "updated_at", null: false
     t.index ["tweet_id"], name: "index_comments_on_tweet_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "followers", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "follower_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follower_id"], name: "index_followers_on_follower_id"
+    t.index ["user_id"], name: "index_followers_on_user_id"
+  end
+
+  create_table "hashtag_tweets", force: :cascade do |t|
+    t.integer "hashtag_id", null: false
+    t.integer "tweet_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hashtag_id"], name: "index_hashtag_tweets_on_hashtag_id"
+    t.index ["tweet_id"], name: "index_hashtag_tweets_on_tweet_id"
   end
 
   create_table "hashtags", force: :cascade do |t|
@@ -90,6 +108,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_222907) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "tweets"
   add_foreign_key "comments", "users"
+  add_foreign_key "followers", "followers"
+  add_foreign_key "followers", "users"
+  add_foreign_key "hashtag_tweets", "hashtags"
+  add_foreign_key "hashtag_tweets", "tweets"
   add_foreign_key "retweets", "tweets"
   add_foreign_key "retweets", "users"
   add_foreign_key "tweets", "users"

@@ -8,6 +8,7 @@ class HashtagsController < ApplicationController
 
   # GET /hashtags/1 or /hashtags/1.json
   def show
+    @tweets = @hashtag.tweets
   end
 
   # GET /hashtags/new

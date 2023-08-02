@@ -10,6 +10,8 @@
 #
 class Hashtag < ApplicationRecord
 
-    
+    has_many :hashtag_tweets
+    has_many :tweets, through: :hashtag_tweets
 
+    scope :top, -> { order(mentions: :desc) }
 end

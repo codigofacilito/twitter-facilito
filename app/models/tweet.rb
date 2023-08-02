@@ -21,7 +21,10 @@ class Tweet < ApplicationRecord
   def make_new_hastag
     self.body.scan(/#\w+/).each do |hashtag|
       tag = Hashtag.where(identifier:hashtag).first_or_create
+
       tag.update(mentions: tag.mentions + 1)
+      HashtagTweet.create(tweet: self, hashtag: tag)
+      
     end 
   end
 

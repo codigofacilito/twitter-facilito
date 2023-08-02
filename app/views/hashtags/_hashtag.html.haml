@@ -1,4 +1,6 @@
 %div{:id => "#{dom_id hashtag}"}
   %p
     %strong Identifier:
-    = hashtag.identifier
+    = link_to hashtag do
+      = hashtag.identifier
+    
