@@ -10,11 +10,6 @@
             =link_to tweet_path(tweet) do
               hace
               = time_ago_in_words(tweet.created_at)
-        %p= tweet.body
-        .image-container
-          -if tweet.images.any?
-            - tweet.images.each do |image|
-              = image_tag(image, class: "tweet-image")
+        =render "tweets/form", tweet: tweet
         .icons
           %button Retweet
-          =link_to "Edit", edit_tweet_path(tweet), class: "btn btn-primary", :"data-turbo-stream" => "true"

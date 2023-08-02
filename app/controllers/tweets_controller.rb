@@ -6,7 +6,6 @@ class TweetsController < ApplicationController
   def index
     @tweets = Tweet.order("id desc")
     @tweet = Tweet.new
-    @hashtag =  Hashtag.top
   end
 
   # GET /tweets/1 or /tweets/1.json
@@ -20,6 +19,10 @@ class TweetsController < ApplicationController
 
   # GET /tweets/1/edit
   def edit
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   # POST /tweets or /tweets.json

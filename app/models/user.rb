@@ -19,5 +19,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :tweets
   has_one_attached :avatar
+
+  def username_or_email
+    username || email.split('@')[0]
+  end
     
 end
