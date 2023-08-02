@@ -60,11 +60,11 @@ main{
 
 .tweet{
   overflow-y: hidden;
-  transition: 0.2s ease-out;
+  // transition: 0.2s ease-out;
   
-  &:hover{
-    background-color: #f8f9fa;
-  }
+  // &:hover{
+  //   background-color: #f8f9fa;
+  // }
 }
 
 .tweet--inner {
@@ -76,6 +76,20 @@ main{
   gap: 1em;
   grid-template-columns: 60px 1fr;
   grid-template-areas: "avatar tweet";
+
+  &.individual{
+    grid-template-areas: "avatar tweet"
+                          "icons icons";
+    .actions-bar{
+      grid-area: icons;
+      width: 100%;
+      margin-top:1em;
+      display: flex;
+      flex-direction: column;
+      gap:1em;
+    }
+  }
+  
 
   img {
     grid-area: avatar;
@@ -120,4 +134,10 @@ main{
 
 .no-margin{
   margin: 0;
+}
+
+.subtitle-text{
+  font-size: 1.2em;
+  color: #6c757d;
+  font-weight: 300;
 }

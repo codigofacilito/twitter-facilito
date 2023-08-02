@@ -6,8 +6,9 @@
       %header
         %p= tweet.user.username_or_email
         %time
-          hace
-          = time_ago_in_words(tweet.created_at)
+          =link_to tweet_path(tweet) do
+            hace
+            = time_ago_in_words(tweet.created_at)
       %p= tweet.body
       .icons
         %button Retweet

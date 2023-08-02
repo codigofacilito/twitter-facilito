@@ -1,10 +1,4 @@
-.aside-with-main
-  %aside
-    -if user_signed_in?
-      =render "users/form", user: current_user
-  %section
-    -if user_signed_in?
-      =render "tweets/form", tweet: @tweet
-    #tweets.d-grid.gap-2.d-md-block.mt-4
-      =render @tweets
-  =render @hashtag
+-if user_signed_in?
+  =render "tweets/form", tweet: @tweet
+#tweets.d-grid.gap-2.d-md-block.mt-4
+  =render @tweets

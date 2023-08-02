@@ -6,7 +6,6 @@ class TweetsController < ApplicationController
   def index
     @tweets = Tweet.order("id desc")
     @tweet = Tweet.new
-    @hashtag =  Hashtag.top
   end
 
   # GET /tweets/1 or /tweets/1.json
