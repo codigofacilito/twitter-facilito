@@ -69,3 +69,25 @@ main{
   display: block;
   margin: 0 auto;
 }
+
+
+.tweet-animation{
+  transform-origin: top;
+  animation: slideDown 0.5s ease-in-out;
+  // animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+  transform: scaleY(0);
+}
+
+.hide-y{
+  overflow-y: hidden;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

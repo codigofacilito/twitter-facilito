@@ -1,0 +1,7 @@
+.hide-y
+  .tweet{class:[("tweet-animation" if local_assigns[:animate])]}
+    -if tweet.user.avatar.attached?
+      = image_tag url_for(tweet.user.avatar), class: "img-thumbnail"
+    %p.tweet-content= tweet.body
+    .icons
+      %button Retweet

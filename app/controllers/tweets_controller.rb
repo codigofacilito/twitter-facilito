@@ -4,7 +4,7 @@ class TweetsController < ApplicationController
   before_action :set_current_user, only: [:retweet]
   # GET /tweets or /tweets.json
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.order("id desc")
     @tweet = Tweet.new
     @hashtag =  Hashtag.top
   end
@@ -30,6 +30,7 @@ class TweetsController < ApplicationController
       if @tweet.save
         format.html { redirect_back(fallback_location: root_path, notice: "Tweet was successfully created." ) }
         format.json { render :show, status: :created, location: @tweet }
+        format.turbo_stream
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @tweet.errors, status: :unprocessable_entity }
