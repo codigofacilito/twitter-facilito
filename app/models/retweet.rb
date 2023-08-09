@@ -12,6 +12,7 @@
 class Retweet < ApplicationRecord
   belongs_to :user
   belongs_to :tweet
+  has_one :retweeted_tweet, class_name: 'Tweet', foreign_key: 'retweet_id'
 
   validates_uniqueness_of :tweet_id, scope: :user_id
   

@@ -15,7 +15,6 @@ class Tweet < ApplicationRecord
 
   has_many :retweets
 
-  before_validation :set_retweet
   after_create :make_new_hastag
   has_many_attached :images
 
@@ -25,10 +24,6 @@ class Tweet < ApplicationRecord
 
   def is_retweet?
     !retweet_id.nil?
-  end
-  
-  def set_retweet
-    
   end
 
   def make_new_hastag

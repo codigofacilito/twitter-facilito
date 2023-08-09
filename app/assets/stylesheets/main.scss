@@ -163,3 +163,21 @@ main{
   padding: 0.2em 0.5em;
   border-radius: 10px;
 }
+
+.blink{
+  animation: blink-yellow 0.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 3;
+}
+
+@keyframes blink-yellow {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: #ffc107;
+  }
+  100% {
+    background-color: transparent;
+  }
+}

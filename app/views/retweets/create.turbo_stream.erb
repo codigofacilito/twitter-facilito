@@ -1,5 +1,7 @@
-<%= turbo_stream.prepend "tweets", locals: {tweet: @retweet.tweet}, partial: "tweets/tweet" %>
+<%= turbo_stream.prepend "tweets", locals: { tweet: @retweet.tweet}, partial: "tweets/tweet" %>
 <%= turbo_stream.replace "retweets-#{@retweet.tweet.id}" do %>
-  <%= @retweet.tweet.retweets.count %>
+  <span class="blink">
+    <%= @retweet.tweet.retweets.count %>
+  </span>
 <% end %>
 
