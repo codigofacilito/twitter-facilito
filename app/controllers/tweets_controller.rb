@@ -1,11 +1,12 @@
 class TweetsController < ApplicationController
-  before_action :set_tweet, only: %i[ show edit update destroy ]
+  before_action :set_tweet, only: %i[ show edit update destroy retweet]
   before_action :authenticate_user!, except: [:index, :show]
   
   # GET /tweets or /tweets.json
   def index
     @tweets = Tweet.order("id desc")
     @tweet = Tweet.new
+    @hashtag =  Hashtag.top.limit(5)
   end
 
   # GET /tweets/1 or /tweets/1.json
@@ -66,17 +67,22 @@ class TweetsController < ApplicationController
 
   def retweet
     @tweet.retweet! current_user
+    redirect_to root_path
   end
 
   private
+<<<<<<< HEAD
     
 
+=======
+ 
+>>>>>>> e237395bd5d129ecb2f9f35fbd803382ae7351c6
     def set_tweet
       @tweet = Tweet.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def tweet_params
-      params.require(:tweet).permit(:body)
+      params.require(:tweet).permit(:body, images:[])
     end
 end

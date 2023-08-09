@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
-
+  before_action :set_user, only: %i[ show edit update destroy follow]
   # GET /users or /users.json
   def index
     @users = User.all
@@ -56,6 +55,16 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: "User was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def follow
+    @user.follow(current_user)
+    return redirect_to @user
+  end
+
+  def unfollow
+    @user.unfollow(current_user)
+    return redirect_to @user
   end
 
   private

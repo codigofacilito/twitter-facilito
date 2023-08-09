@@ -1,6 +1,9 @@
 %p{:style => "color: green"}= notice
 = render @user
+- if current_user.following? @user
+  = link_to "Dejar de seguir", unfollow_user_path(@user)
+- else
+  = link_to "Seguir", follow_user_path(@user)
+
 %div
-  - @tweets.each do |tweet|
-    %li= tweet.body
-    = link_to "retweet", retweet_tweet_post, method: :post
+  =render @tweets

@@ -1,3 +1,4 @@
+
 =turbo_frame_tag dom_id(tweet) do
   .tweet 
     .tweet--inner{class:[("tweet-anmation" if local_assigns[:animate])]}
@@ -11,6 +12,10 @@
               hace
               = time_ago_in_words(tweet.created_at)
         %p= tweet.body
+        .image-container
+          -if tweet.images.any?
+            - tweet.images.each do |image|
+              = image_tag(image, class: "tweet-image")
         .icons
           %button Retweet
           =link_to "Edit", edit_tweet_path(tweet), class: "btn btn-primary", :"data-turbo-stream" => "true"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_02_213729) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_02_225846) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -88,6 +88,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_02_213729) do
     t.string "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "retweet_id", default: 1
+    t.index ["retweet_id"], name: "index_tweets_on_retweet_id"
     t.index ["user_id"], name: "index_tweets_on_user_id"
   end
 
@@ -114,5 +116,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_02_213729) do
   add_foreign_key "hashtag_tweets", "tweets"
   add_foreign_key "retweets", "tweets"
   add_foreign_key "retweets", "users"
+  add_foreign_key "tweets", "retweets"
   add_foreign_key "tweets", "users"
 end
