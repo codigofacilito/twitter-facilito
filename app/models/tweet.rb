@@ -11,12 +11,12 @@
 #
 class Tweet < ApplicationRecord
   belongs_to :user
-  belongs_to :retweet
 
   has_many :retweets
 
   before_validation :set_retweet
   after_create :make_new_hastag
+  has_many_attached :images
 
   def retweet!(user)
     retweets.create(user:user)
@@ -27,7 +27,7 @@ class Tweet < ApplicationRecord
   end
   
   def set_retweet
-    self.retweet_id = Retweet.last.id if retweet_id.nil?
+    
   end
 
   def make_new_hastag
@@ -38,4 +38,3 @@ class Tweet < ApplicationRecord
     end
   end
 end
-

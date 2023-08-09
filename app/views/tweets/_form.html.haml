@@ -10,5 +10,7 @@
   
   %div
     = form.text_area :body, class:"form-control", placeholder:"What's happening?", rows: 5
+  %div
+    = form.file_field :images, multiple:true, class:"form-control", rows: 5  
   %div.d-grid.gap-2
     = form.submit "Tweet", class:"btn btn-primary btn-block"
