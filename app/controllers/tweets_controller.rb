@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_current_user, only: [:retweet]
+  
   # GET /tweets or /tweets.json
   def index
     @tweets = Tweet.order("id desc")
@@ -70,9 +70,6 @@ class TweetsController < ApplicationController
 
   private
     
-    def current_user
-      User.last
-    end
 
     def set_tweet
       @tweet = Tweet.find(params[:id])

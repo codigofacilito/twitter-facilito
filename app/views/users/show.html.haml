@@ -3,4 +3,4 @@
 %div
   - @tweets.each do |tweet|
     %li= tweet.body
-    = link_to "retweet" retweet_tweet_post method: :post
+    = link_to "retweet", retweet_tweet_post, method: :post

@@ -20,6 +20,7 @@
             =render "users/form", user: current_user
         %section
           = yield
-        =render @hashtag
+        -@hashtag.each do |ht|
+          =render "hashtags/hashtag", hashtag: ht
 
       
