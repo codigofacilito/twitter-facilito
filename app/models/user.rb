@@ -18,6 +18,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :tweets
+  has_many :retweets
   has_one_attached :avatar
 
   def username_or_email

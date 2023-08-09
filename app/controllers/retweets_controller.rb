@@ -21,15 +21,17 @@ class RetweetsController < ApplicationController
 
   # POST /retweets or /retweets.json
   def create
-    @retweet = Retweet.new(retweet_params)
+    @retweet = current_user.retweets.new(retweet_params)
 
     respond_to do |format|
       if @retweet.save
         format.html { redirect_to retweet_url(@retweet), notice: "Retweet was successfully created." }
         format.json { render :show, status: :created, location: @retweet }
+        format.turbo_stream
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @retweet.errors, status: :unprocessable_entity }
+        format.turbo_stream
       end
     end
   end
@@ -65,6 +67,6 @@ class RetweetsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def retweet_params
-      params.require(:retweet).permit(:user_id, :tweet_id, :body)
+      params.require(:retweet).permit(:tweet_id, :body)
     end
 end

@@ -1,20 +1,7 @@
 = form_with(model: retweet) do |form|
-  - if retweet.errors.any?
-    %div{:style => "color: red"}
-      %h2
-        = pluralize(retweet.errors.count, "error")
-        prohibited this retweet from being saved:
-      %ul
-        - retweet.errors.each do |error|
-          %li= error.full_message
+  = form.hidden_field :tweet_id
+  -# %div
+  -#   = form.label :body, style: "display: block"
+  -#   = form.text_field :body
   %div
-    = form.label :user_id, style: "display: block"
-    = form.text_field :user_id
-  %div
-    = form.label :tweet_id, style: "display: block"
-    = form.text_field :tweet_id
-  %div
-    = form.label :body, style: "display: block"
-    = form.text_field :body
-  %div
-    = form.submit
+    = form.submit "Retweet", class: "btn btn-primary"

@@ -11,11 +11,18 @@
             =link_to tweet_path(tweet) do
               hace
               = time_ago_in_words(tweet.created_at)
+          -if tweet.retweet.present?
+            %p.no-margin.retweet-label= link_to "Retweet por #{tweet.retweet.user.username_or_email}", tweet.retweet
         %p= tweet.body
         .image-container
           -if tweet.images.any?
             - tweet.images.each do |image|
               = image_tag(image, class: "tweet-image")
         .icons
-          %button Retweet
+          =render "retweets/form", retweet: Retweet.new(tweet_id: tweet.id)
+          %p.no-margin
+            -# frame
+            =turbo_frame_tag "retweets-#{tweet.id}" do
+              #{tweet.retweets.count}
+            Retweets
           =link_to "Edit", edit_tweet_path(tweet), class: "btn btn-primary", :"data-turbo-stream" => "true"
