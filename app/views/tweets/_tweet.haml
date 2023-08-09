@@ -11,6 +11,8 @@
             =link_to tweet_path(tweet) do
               hace
               = time_ago_in_words(tweet.created_at)
+          -if tweet.retweet.present?
+            %p.no-margin.retweet-label= link_to "Retweet por #{tweet.retweet.user.username_or_email}", tweet.retweet
         %p= tweet.body
         .image-container
           -if tweet.images.any?
