@@ -71,12 +71,6 @@ class TweetsController < ApplicationController
   end
 
   private
-<<<<<<< HEAD
-    
-
-=======
- 
->>>>>>> e237395bd5d129ecb2f9f35fbd803382ae7351c6
     def set_tweet
       @tweet = Tweet.find(params[:id])
     end
