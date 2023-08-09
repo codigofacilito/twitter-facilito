@@ -1,3 +1,6 @@
+
+
+
 %p{:style => "color: green"}= notice
 %h1 Comments
 #comments
@@ -5,4 +8,4 @@
     = render comment
     %p
       = link_to "Show this comment", comment
-= link_to "New comment", new_comment_path
+= link_to "New comment", new_comment_path, class: "button"
