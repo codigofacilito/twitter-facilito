@@ -116,7 +116,8 @@ main{
     display: flex;
     flex-direction: row;
     gap: 1em;
-    justify-content: space-between;
+    // justify-content: space-between;
+    align-items: center;
   }
   header{
     display: flex;
